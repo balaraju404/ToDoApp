@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="mt-5">
+                <div class="form-group" *ngIf="!isLoginMode">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" class="form-control" ngModel required>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <input type="email" id="email" name="email" class="form-control" ngModel required email>
+                </div>
+                <div class="form-group" *ngIf="!isLoginMode">
+                    <label for="otp">OTP</label>
+                    <div class="input-group">
+                        <input type="text" id="otp" name="otp" maxlength="4" placeholder="Enter OTP" class="form-control" ngModel required>
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-primary" (click)="onSendOTP(form.value.email)">Send OTP</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group">
+                        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="password" required>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button" (click)="togglePasswordVisibility()">
+                                <span *ngIf="passwordVisible">Hide</span>
+                                <span *ngIf="!passwordVisible">Show</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>                
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="isLoading">{{ isLoginMode ? 'Login' : 'Sign Up' }}</button>
+                </div>
+                <div class="form-group text-center">
+                    <button type="button" class="btn btn-link" (click)="onSwitchMode()">Switch to {{ isLoginMode ? 'Sign Up' : 'Login' }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <app-loading-spin *ngIf="isLoading"></app-loading-spin>
+            <app-error-popup *ngIf="errorStatus" [error]="error" [success]="success" (close)="onClose($event)"></app-error-popup>
+        </div>
+    </div>
+</div>

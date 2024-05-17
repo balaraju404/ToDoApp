@@ -1,0 +1,84 @@
+// .task-container {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+
+// .task-container .btn-group {
+//     width: 100%;
+//     display: flex;
+//     justify-content: space-between;
+// }
+
+// @media (min-width: 768px) {
+//     .task-container .btn-group {
+//         width: auto;
+//     }
+// }
+
+
+
+// .task-header {
+//     color: #333;
+//     margin-bottom: 20px;
+// }
+
+// .task-container {
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+// }
+
+
+
+// .task-container .btn-group {
+//     display: flex;
+// }
+
+// .task-container .btn-group .btn {
+//     border-radius: 20px;
+// }
+
+.task-container p {
+    margin: 2px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #555;
+}
+
+.task-section {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Background color */
+}
+
+.task-header {
+    display: flex;
+    align-items: center;
+    color: #555; /* Text color */
+}
+
+.circle {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.yellow {
+    background: radial-gradient(circle, #f8d800, #fea71d);
+}
+
+.green {
+    background: radial-gradient(circle, #8bc34a, #4caf50);
+}
+
+.no-tasks {
+    color: #555; /* Text color */
+    margin-top: 20px;
+}
+

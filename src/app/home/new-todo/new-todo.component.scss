@@ -1,0 +1,37 @@
+.todo-form {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+    font-weight: bold;
+    color: #555; /* Text color */
+}
+
+.form-control {
+    border: 1px solid #ced4da; /* Gray border */
+}
+
+.btn {
+    border-radius: 5px; /* Rounded button */
+}
+
+.btn-success {
+    background-color: #28a745; /* Green button */
+    border-color: #28a745; /* Green border */
+}
+
+.btn-warning {
+    background-color: #ffc107; /* Yellow button */
+    border-color: #ffc107; /* Yellow border */
+}
+
+.btn-block {
+    width: 100%; /* Full width button */
+}
+
+.btn-block + .btn-block {
+    margin-top: 10px; /* Margin between buttons */
+}

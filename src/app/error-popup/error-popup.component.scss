@@ -1,0 +1,51 @@
+// #main{
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     height: 100vh;
+//     width: 100vw;
+//     background-color: rgba(0, 0, 0, 0.8);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     z-index: 100;
+// }
+// #errorCon{
+//     height: 30vh;
+//     width: 40vw;
+//     background-color:brown;
+//     border: 1px solid rgb(180, 0, 0);
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     justify-content: center;
+//     padding: 10px;
+// }
+#main {
+    z-index: 9999   ;
+}
+
+#errorCon {
+    max-width: 400px;
+    /* Set maximum width */
+}
+
+.btn-primary {
+    background-color: #007bff;
+    /* Primary button color */
+    border-color: #007bff;
+    /* Button border color */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    /* Button color on hover */
+    border-color: #0056b3;
+    /* Button border color on hover */
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+    box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.5);
+    /* Button focus shadow */
+}

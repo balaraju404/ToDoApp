@@ -1,0 +1,12 @@
+<div class="container">
+    <p>profile works!</p>
+    <div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
+        <div class="btn-group" role="group" aria-label="Profile Actions">
+            <button type="button" class="btn btn-primary" (click)="onLogout()">Logout</button>
+            <button type="button" class="btn btn-primary" (click)="onLogoutAll()">Logout All Sessions</button>
+            <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+        </div>
+    </div>
+</div>
+<app-loading-spin *ngIf="isLoading"></app-loading-spin>
+<app-error-popup *ngIf="errorStatus" [error]="error" (close)="onClose($event)"></app-error-popup>

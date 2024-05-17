@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="recycle-bin text-center">
+          <h5 class="task-header">
+            <span class="circle"></span> Recycle Bin
+          </h5>
+          <ul class="list-group">
+            <ng-container *ngFor="let task of deletedTasks">
+              <li class="list-group-item">
+                <div class="task-container">
+                  <p>{{ task.description }}</p>
+                  <div class="btn-group">
+                    <button class="btn btn-primary btn-sm" (click)="restoreTask(task._id)">Restore</button>
+                    <button class="btn btn-danger btn-sm" (click)="permanentDeleteTask(task._id)">Permanent Delete</button>
+                  </div>
+                </div>
+              </li>
+            </ng-container>
+          </ul>
+          <div *ngIf="deletedTasks.length === 0">
+            <h4 class="no-tasks">No Deleted Tasks Found</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

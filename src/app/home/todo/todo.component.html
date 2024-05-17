@@ -1,0 +1,77 @@
+<div class="container" *ngIf="tasksList.length !== 0">
+    <div class="row">
+        <!-- Ongoing Tasks Section -->
+        <div class="col-md-6">
+            <div class="task-section">
+                <h5 class="task-header">
+                    <span class="circle yellow"></span> Ongoing Tasks
+                </h5>
+                <ul class="list-group">
+                    <ng-container *ngFor="let todo of tasksList">
+                        <li class="list-group-item" *ngIf="!todo.completed">
+                            <div class="task-container">
+                                <p>{{ todo.description }}</p>
+                                <div class="btn-group">
+                                    <button class="btn btn-success btn-sm" type="button"
+                                        (click)="completeTask(todo._id)">Mark as Complete</button>
+                                    <button class="btn btn-primary btn-sm" type="button"
+                                        (click)="editTask(todo._id)">Edit</button>
+                                    <button class="btn btn-danger btn-sm" type="button"
+                                        (click)="deleteTask(todo._id)">Delete</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ng-container>
+                </ul>
+                <div *ngIf="noOngoingTasks()" class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="no-tasks text-center mt-5">No Ongoing Tasks Found</h4>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <!-- Completed Tasks Section -->
+        <div class="col-md-6">
+            <div class="task-section">
+                <h5 class="task-header">
+                    <span class="circle green"></span> Completed Tasks
+                </h5>
+                <ul class="list-group">
+                    <ng-container *ngFor="let todo of tasksList">
+                        <li class="list-group-item" *ngIf="todo.completed">
+                            <div class="task-container">
+                                <p>{{ todo.description }}</p>
+                                <div class="btn-group">
+                                    <button class="btn btn-primary btn-sm" type="button"
+                                        (click)="notCompleteTask(todo._id)">Mark as Incomplete</button>
+                                    <button class="btn btn-danger btn-sm" type="button"
+                                        (click)="deleteTask(todo._id)">Delete</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ng-container>
+                </ul>
+                <div *ngIf="noCompletedTasks()" class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h4 class="no-tasks text-center mt-5">No Completed Tasks Found</h4>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- No Tasks Found -->
+<div *ngIf="tasksList.length === 0" class="container">
+    <div class="row">
+        <div class="col">
+            <h4 class="no-tasks text-center mt-5">No Tasks Found</h4>
+        </div>
+    </div>
+</div>

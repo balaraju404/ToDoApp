@@ -1,0 +1,14 @@
+<!-- <div id="main">
+    <div id="errorCon">
+        <h4 style="color: white;">{{error}}</h4>
+        <button class="btn btn-primary" type="button" (click)="onClose()">Okay</button>
+    </div>
+</div> -->
+
+<div id="main" class="position-absolute top-0 start-0 h-100 w-100 d-flex align-items-center justify-content-center bg-dark">
+    <div id="errorCon" class="bg-light border rounded p-4">
+        <h4 class="text-danger">{{error}}</h4>
+        <h4 class="text-success">{{success}}</h4>
+        <button class="btn btn-primary" type="button" (click)="onClose()">Okay</button>
+    </div>
+</div>

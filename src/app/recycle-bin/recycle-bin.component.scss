@@ -1,0 +1,33 @@
+.circle {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-right: 8px;
+    background: linear-gradient(145deg, #ffea00, #ff9e00);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .recycle-bin {
+    margin-top: 30px; /* Add margin to the top */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 10px; /* Add border-radius for rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add box-shadow for depth */
+  }
+  
+  .task-header {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the header horizontally */
+  }
+  
+  .task-container {
+    margin-top: 15px; /* Add margin between tasks */
+  }
+  
+  .no-tasks {
+    color: #999; /* Light gray color for the no tasks message */
+    text-align: center; /* Center the text */
+    margin-top: 15px; /* Add margin to the top */
+  }
+  
