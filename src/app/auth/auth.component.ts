@@ -113,6 +113,7 @@ export class AuthComponent implements OnInit {
         console.log(res);
         this.isLoading = false;
         if (this.isLoginMode) {
+          this.authService.setLoginStatus(true)
           this.router.navigate(['/home']);
         } else {
           this.isLoginMode = true;

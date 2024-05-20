@@ -9,6 +9,7 @@ import { TodoService, TaskModel } from './todo.service';
 export class TodoComponent implements OnInit {
 
   tasksList: TaskModel[] = [];
+  fetchTasksStatus: boolean;
 
   constructor(private todoService: TodoService) { }
 
@@ -18,6 +19,9 @@ export class TodoComponent implements OnInit {
       this.todoService.tasksSubject.subscribe((tasks) => {
         this.tasksList = tasks.filter((task) => task.deleted === false)
       });
+      this.todoService.fetchTasksStatus.subscribe((status) => {
+        this.fetchTasksStatus = status;
+      })
     }
   }
 

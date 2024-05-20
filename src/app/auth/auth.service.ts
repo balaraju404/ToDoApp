@@ -20,8 +20,11 @@ export class AuthService {
 
     tokenSubject = new BehaviorSubject<string>(this.getToken());
 
+    private loggedInRecently = false;
+
     constructor(private http: HttpClient) { }
 
+    // Public Methods
     sendOTP(email: string, otp: any) {
         return this.http.post<any>(`${this.apiBaseUrl}/users/otp`, { email: email, otp: otp })
     }
@@ -47,24 +50,6 @@ export class AuthService {
             }),
             catchError(this.handleError)
         );
-    }
-
-    setUser(user) {
-        localStorage.setItem('user', JSON.stringify(user));
-        this.userSubject.next(user);
-    }
-
-    getUser() {
-        return JSON.parse(localStorage.getItem('user'));
-    }
-
-    setToken(token: string) {
-        localStorage.setItem('token', token);
-        this.tokenSubject.next(token);
-    }
-
-    getToken() {
-        return localStorage.getItem('token');
     }
 
     logout() {
@@ -130,6 +115,40 @@ export class AuthService {
         }).pipe(catchError(this.handleError))
     }
 
+    // User Management Methods
+    setUser(user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        this.userSubject.next(user);
+    }
+
+    getUser() {
+        return JSON.parse(localStorage.getItem('user'));
+    }
+
+    // Token Management Methods
+    setToken(token: string) {
+        localStorage.setItem('token', token);
+        this.tokenSubject.next(token);
+    }
+
+    getToken() {
+        return localStorage.getItem('token');
+    }
+
+    // Login Status Methods
+    setLoginStatus(status: boolean) {
+        this.loggedInRecently = status;
+    }
+
+    isLoggedInRecently(): boolean {
+        return this.loggedInRecently;
+    }
+
+    resetLoginStatus() {
+        this.loggedInRecently = false;
+    }
+
+    // Private Methods
     private handleError(errorRes: HttpErrorResponse) {
         console.log(errorRes);
         let errorMessage = 'An unknown error occurred!';

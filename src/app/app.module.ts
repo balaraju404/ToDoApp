@@ -15,6 +15,7 @@ import { LoadingSpinComponent } from './loading-spin/loading-spin.component';
 import { ErrorPopupComponent } from './error-popup/error-popup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RecycleBinComponent } from './recycle-bin/recycle-bin.component';
+import { PopUpComponent } from './pop-up/pop-up.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { RecycleBinComponent } from './recycle-bin/recycle-bin.component';
     ErrorPopupComponent,
     ProfileComponent,
     RecycleBinComponent,
+    PopUpComponent,
 
   ],
   imports: [

@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Subject } from "rxjs";
 import { AuthService } from "../../auth/auth.service";
+import { PopUpService } from "../../pop-up/pop-up.service";
 
 export interface TaskModel {
     _id?: string;
@@ -14,15 +15,17 @@ export interface TaskModel {
 @Injectable({ providedIn: 'root' })
 export class TodoService {
     tasksSubject = new BehaviorSubject<TaskModel[]>([]);
+    fetchTasksStatus = new BehaviorSubject<boolean>(false);
 
     onEditTask = new Subject<any>();
 
     private apiBaseUrl = 'https://task-manager-api-rho-seven.vercel.app';
     // private apiBaseUrl = 'https://localhost:3000';
 
-    constructor(private http: HttpClient, private authService: AuthService) { }
+    constructor(private http: HttpClient, private authService: AuthService, private popUpService: PopUpService) { }
 
     fetchTasks() {
+        this.fetchTasksStatus.next(true);
         const token = this.authService.getToken();
         if (!token) {
             console.error('No token found');
@@ -36,8 +39,10 @@ export class TodoService {
         }).subscribe(
             (tasks) => {
                 this.tasksSubject.next(tasks);
+                this.fetchTasksStatus.next(false)
             },
             (error) => {
+                this.fetchTasksStatus.next(false)
                 if (error.status === 401) {
                     console.error('Unauthorized access: Please log in again.');
                 } else if (error.status === 403) {
@@ -68,9 +73,11 @@ export class TodoService {
             () => {
                 console.log('Task saved successfully');
                 this.fetchTasks();
+                this.popUpService.successMsg.next('Task Added!')
             },
             (error) => {
                 console.error('Error saving task:', error);
+                this.popUpService.errorMsg.next('Error saving task!')
             }
         );
     }
@@ -103,8 +110,10 @@ export class TodoService {
             }
         }).subscribe(() => {
             this.fetchTasks();
+            this.popUpService.successMsg.next('Task Updated!')
         }, (error) => {
             console.error('Error updating task:', error);
+            this.popUpService.errorMsg.next('Error updating task!')
         })
     }
 
@@ -126,9 +135,11 @@ export class TodoService {
                 const updatedTasks = this.tasksSubject.value.filter(t => t._id !== id);
                 this.tasksSubject.next(updatedTasks);
                 this.fetchTasks();
+                this.popUpService.successMsg.next('Task Deleted!')
             },
             (error) => {
                 console.error('Error deleting task:', error);
+                this.popUpService.errorMsg.next('Error deleting task!')
             },
             () => {
                 // Cleanup: Unsubscribe from the observable

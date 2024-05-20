@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
         <!-- Completed Tasks Section -->
@@ -61,11 +61,15 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>
 </div>
+
+<!-- Tasks Loading -->
+<!-- <div *ngIf="fetchTasksStatus" class="container">
+    <h1>Loading...</h1>
+</div> -->
 
 <!-- No Tasks Found -->
 <div *ngIf="tasksList.length === 0" class="container">
@@ -75,3 +79,7 @@
         </div>
     </div>
 </div>
+
+<app-loading-spin *ngIf="fetchTasksStatus"></app-loading-spin>
+
+<app-pop-up></app-pop-up>
