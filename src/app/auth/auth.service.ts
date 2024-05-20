@@ -12,6 +12,9 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
+    private apiBaseUrl = 'https://task-manager-api-rho-seven.vercel.app';
+    // private apiBaseUrl = 'https://localhost:3000';
+
     private userSubject = new BehaviorSubject<AuthResponseData>(null);
     user$ = this.userSubject.asObservable();
 
@@ -20,12 +23,12 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     sendOTP(email: string, otp: any) {
-        return this.http.post<any>('http://localhost:3000/users/otp', { email: email, otp: otp })
+        return this.http.post<any>(`${this.apiBaseUrl}/users/otp`, { email: email, otp: otp })
     }
 
     signUp(name: string, email: string, password: string) {
         return this.http.post<AuthResponseData>(
-            'http://localhost:3000/users',
+            `${this.apiBaseUrl}/users`,
             { name, email, password }
         ).pipe(
             tap(res => this.setToken(res.token)),
@@ -35,7 +38,7 @@ export class AuthService {
 
     login(email: string, password: string) {
         return this.http.post<AuthResponseData>(
-            'http://localhost:3000/users/login',
+            `${this.apiBaseUrl}/users/login`,
             { email, password }
         ).pipe(
             tap(res => {
@@ -72,7 +75,7 @@ export class AuthService {
             return;
         }
 
-        return this.http.post('http://localhost:3000/users/logout', {}, {
+        return this.http.post(`${this.apiBaseUrl}/users/logout`, {}, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -95,7 +98,7 @@ export class AuthService {
             return;
         }
 
-        return this.http.post('http://localhost:3000/users/logoutAll', {}, {
+        return this.http.post(`${this.apiBaseUrl}/users/logoutAll`, {}, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -120,7 +123,7 @@ export class AuthService {
             console.error('Token not found in local storage');
             return;
         }
-        return this.http.delete('http://localhost:3000/users/me', {
+        return this.http.delete(`${this.apiBaseUrl}/users/me`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }

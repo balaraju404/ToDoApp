@@ -17,6 +17,9 @@ export class TodoService {
 
     onEditTask = new Subject<any>();
 
+    private apiBaseUrl = 'https://task-manager-api-rho-seven.vercel.app';
+    // private apiBaseUrl = 'https://localhost:3000';
+
     constructor(private http: HttpClient, private authService: AuthService) { }
 
     fetchTasks() {
@@ -26,7 +29,7 @@ export class TodoService {
             return;
         }
 
-        this.http.get<TaskModel[]>('http://localhost:3000/tasks', {
+        this.http.get<TaskModel[]>(`${this.apiBaseUrl}/tasks`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -57,7 +60,7 @@ export class TodoService {
             return;
         }
 
-        this.http.post('http://localhost:3000/tasks', task, {
+        this.http.post(`${this.apiBaseUrl}/tasks`, task, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -80,7 +83,7 @@ export class TodoService {
             return;
         }
 
-        return this.http.get<TaskModel>(`http://localhost:3000/tasks/${id}`, {
+        return this.http.get<TaskModel>(`${this.apiBaseUrl}/tasks/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -94,7 +97,7 @@ export class TodoService {
             console.error('No token found');
             return;
         }
-        this.http.patch(`http://localhost:3000/tasks/${id}`, task, {
+        this.http.patch(`${this.apiBaseUrl}/tasks/${id}`, task, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
@@ -113,7 +116,7 @@ export class TodoService {
             return;
         }
 
-        this.http.delete(`http://localhost:3000/tasks/${id}`, {
+        this.http.delete(`${this.apiBaseUrl}/tasks/${id}`, {
             headers: {
                 'Authorization': `Bearer ${token}`
             }
