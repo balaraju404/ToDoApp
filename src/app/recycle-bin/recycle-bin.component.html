@@ -1,28 +1,34 @@
 <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <div class="recycle-bin text-center">
-          <h5 class="task-header">
-            <span class="circle"></span> Recycle Bin
-          </h5>
-          <ul class="list-group">
-            <ng-container *ngFor="let task of deletedTasks">
-              <li class="list-group-item">
-                <div class="task-container">
-                  <p>{{ task.description }}</p>
-                  <div class="btn-group">
-                    <button class="btn btn-primary btn-sm" (click)="restoreTask(task._id)">Restore</button>
-                    <button class="btn btn-danger btn-sm" (click)="permanentDeleteTask(task._id)">Permanent Delete</button>
-                  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="recycle-bin text-center">
+        <h5 class="task-header">
+          <span class="circle"></span> Recycle Bin
+        </h5>
+        <ul class="list-group">
+          <ng-container *ngFor="let task of deletedTasks">
+            <li class="list-group-item">
+              <div class="task-container">
+                <p>{{ task.description }}</p>
+                <div class="btn-group">
+                  <button class="btn btn-link btn-sm" (click)="restoreTask(task._id)">
+                    <i class="fas fa-undo-alt text-white bg-warning p-1 rounded"></i> <!-- Replace with appropriate icon class -->
+                  </button>
+                  <button class="btn btn-link btn-sm" (click)="permanentDeleteTask(task._id)">
+                    <i class="fas fa-trash-alt text-white bg-danger p-1 rounded"></i> <!-- Replace with appropriate icon class -->
+                  </button>
                 </div>
-              </li>
-            </ng-container>
-          </ul>
-          <div *ngIf="deletedTasks.length === 0">
-            <h4 class="no-tasks">No Deleted Tasks Found</h4>
-          </div>
+              </div>
+            </li>
+          </ng-container>
+        </ul>
+        <div *ngIf="deletedTasks.length === 0">
+          <h4 class="no-tasks">No Deleted Tasks Found</h4>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
+<app-loading-spin *ngIf="fetchTasksStatus"></app-loading-spin>
+<app-pop-up></app-pop-up>

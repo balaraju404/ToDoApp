@@ -1,0 +1,33 @@
+/* Styling for the navigation bar */
+.nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #343a40; /* Dark background color */
+  padding: 20px 0;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+/* Styling for the navigation links */
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Styling for active link */
+.nav-link.active {
+  background-color: #6c757d; /* Active link background color */
+  border-radius: 3px;
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 600px) {
+  .nav {
+    // flex-direction: column;
+    // align-items: center;
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+}

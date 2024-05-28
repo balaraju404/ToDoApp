@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -37,7 +38,8 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    DragDropModule
   ],
   providers: [TodoService],
   bootstrap: [AppComponent]

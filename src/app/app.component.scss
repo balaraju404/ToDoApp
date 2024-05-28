@@ -1,0 +1,32 @@
+// // Define CSS variables for light theme
+// :root {
+//   --background-color: #f5f5f5;
+//   --text-color: #333;
+//   --button-background: #007bff;
+//   --button-color: #fff;
+// }
+
+// // Define CSS variables for dark theme
+// .dark-theme {
+//   --background-color: #333;
+//   --text-color: #fff;
+//   --button-background: #555;
+//   --button-color: #fff;
+// }
+
+// // Apply theme-specific styles using CSS variables
+// body {
+//   background-color: var(--background-color);
+//   color: var(--text-color);
+// }
+
+// .btn-primary {
+//   background-color: var(--button-background);
+//   color: var(--button-color);
+// }
+
+// .theme-toggle {
+//   position: fixed;
+//   top: 20px;
+//   right: 20px;
+// }

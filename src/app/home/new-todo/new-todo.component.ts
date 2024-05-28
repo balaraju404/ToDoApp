@@ -12,17 +12,21 @@ export class NewTodoComponent implements OnInit {
   editID: string;
   taskName: string
 
+  fetchTasksStatus: boolean;
+
   @ViewChild('form') form: NgForm;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
     this.todoService.onEditTask.subscribe(id => {
+      this.fetchTasksStatus = true;
       console.log(id);
       this.editID = id;
       this.updateMode = true;
       this.todoService.getTask(this.editID).subscribe((task) => {
         this.taskName = task.description
+        this.fetchTasksStatus = false;
       })
     })
   }

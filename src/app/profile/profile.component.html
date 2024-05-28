@@ -1,12 +1,60 @@
 <div class="container">
-    <p>profile works!</p>
-    <div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
-        <div class="btn-group" role="group" aria-label="Profile Actions">
-            <button type="button" class="btn btn-primary" (click)="onLogout()">Logout</button>
-            <button type="button" class="btn btn-primary" (click)="onLogoutAll()">Logout All Sessions</button>
-            <button type="button" class="btn btn-danger" (click)="onDelete()">Delete</button>
+  <div class="row">
+    <!-- Profile Info Section -->
+    <div class="col-md-6 mb-4">
+      <div class="profile-section text-center">
+        <h2>Profile</h2>
+        <!-- Edit Icon -->
+        <i class="fas fa-edit edit-icon" (click)="onEdit()"></i>
+
+        <!-- Avatar Section -->
+        <div class="avatar">
+          <img src="../../assets/profile.jpg" alt="" *ngIf="!image">
+          <img [src]="image" alt="Image" *ngIf="image" />
         </div>
+
+        <!-- Profile Information -->
+        <div class="profile-info mt-3">
+          <p><strong>Name:</strong> {{ user?.name }}</p>
+          <p><strong>Email:</strong> {{ user?.email }}</p>
+          <p><strong>Phone Number:</strong> {{ user?.phno ? '+91 ' + user.phno : '+91 XXXXXXXXXX' }}</p>
+        </div>
+
+        <!-- Change Password Section -->
+        <div class="password-section mt-3">
+          <button class="btn btn-sm btn-outline-danger mb-2"
+            (click)="onChangePassword()">{{passwordChangeMode?'Cancel':'Change Password'}}</button>
+          <form class="password-form" #form="ngForm" (ngSubmit)="onUpdatePassword(form)" *ngIf="passwordChangeMode">
+            <input type="password" class="form-control mb-2" placeholder="New Password" name="password" ngModel required>
+            <input type="password" class="form-control mb-2" placeholder="Re-enter Password" name="password2" ngModel
+              required>
+            <button class="btn btn-sm btn-outline-success" type="submit">Update Password</button>
+          </form>
+        </div>
+      </div>
     </div>
+
+    <!-- Logout and Delete Section -->
+    <div class="col-md-6 text-center mt-3 mt-md-0" style="display: flex;justify-content: center; align-items: center;">
+      <div class="logout-delete-section">
+        <button type="button" class="btn btn-sm btn-outline-primary" (click)="onLogout()">Logout</button>
+        <button type="button" class="btn btn-sm btn-outline-primary" (click)="onLogoutAll()">Logout All Sessions</button>
+        <button type="button" class="btn btn-sm btn-outline-danger" (click)="onDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Loading Spinner and Error Popup Components -->
 <app-loading-spin *ngIf="isLoading"></app-loading-spin>
-<app-error-popup *ngIf="errorStatus" [error]="error" (close)="onClose($event)"></app-error-popup>
+<app-error-popup *ngIf="errorStatus" [error]="errorStatus" (close)="onClose($event)"></app-error-popup>
+
+<app-pop-up></app-pop-up>
+
+<div class="dialog-box" *ngIf="editMode">
+  <div class="dialog-box-content">
+    <i class="fas fa-close close-icon" (click)="onCloseDialogBox()"></i>
+    <input type="file" accept="image/*" (change)="onFileSelected($event)" class="form-control">
+    <button type="button" class="btn btn-sm btn-outline-secondary" (click)="uploadProfile()">Upload</button>
+  </div>
+</div>

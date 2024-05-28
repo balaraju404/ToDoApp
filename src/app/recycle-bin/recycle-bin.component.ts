@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class RecycleBinComponent implements OnInit {
 
   deletedTasks: TaskModel[] = [];
-
+  fetchTasksStatus: boolean;
   constructor(private todoService: TodoService, private router: Router) { }
 
   ngOnInit(): void {
@@ -23,6 +23,9 @@ export class RecycleBinComponent implements OnInit {
     this.todoService.tasksSubject.subscribe((tasks) => {
       this.deletedTasks = tasks.filter((task) => task.deleted === true)
     })
+    this.todoService.fetchTasksStatus.subscribe((status) => {
+      this.fetchTasksStatus = status;
+    });
   }
 
   restoreTask(id: string) {
