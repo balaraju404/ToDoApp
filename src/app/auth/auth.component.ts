@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm, Validators } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
@@ -42,12 +42,13 @@ export class AuthComponent implements OnInit {
   }
 
   onSendOTP(email: string) {
-    const otp = this.generateOTP();
+    const otp:any = this.generateOTP();
     console.log(email, otp);
 
     this.authService.sendOTP(email, otp)
       .subscribe(
-        () => {
+        (res) => {
+          console.log(res);
           this.otp = otp;
           this.success = 'OTP sent successfully!';
           this.error = null;

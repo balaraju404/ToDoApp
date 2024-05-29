@@ -15,6 +15,7 @@ export class TodoComponent implements OnInit {
   completedTasksList: TaskModel[] = [];
   fetchTasksStatus: boolean;
   tasksSubscription: Subscription;
+  editMode: boolean = false;
 
   constructor(private todoService: TodoService) { }
 
@@ -23,6 +24,9 @@ export class TodoComponent implements OnInit {
       this.fetchTasks();
       this.subscribeToTasks();
     }
+    this.todoService.editMode.subscribe(value => {
+      this.editMode = value;
+    })
   }
 
   ngOnDestroy(): void {
@@ -81,6 +85,7 @@ export class TodoComponent implements OnInit {
   }
 
   editTask(id: string): void {
+    this.todoService.editMode.next(true)
     this.todoService.onEditTask.next(id);
   }
 

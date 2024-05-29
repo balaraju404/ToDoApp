@@ -17,6 +17,7 @@ import { ErrorPopupComponent } from './error-popup/error-popup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RecycleBinComponent } from './recycle-bin/recycle-bin.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
+import { UpdateTodoComponent } from './update-todo/update-todo.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { PopUpComponent } from './pop-up/pop-up.component';
     ProfileComponent,
     RecycleBinComponent,
     PopUpComponent,
+    UpdateTodoComponent,
 
   ],
   imports: [

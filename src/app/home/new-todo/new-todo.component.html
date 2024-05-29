@@ -7,10 +7,7 @@
                     <label for="new" class="form-label">Enter Task</label>
                     <input type="text" class="form-control" id="new" name="description" [(ngModel)]="taskName" required>
                 </div>
-                <button type="submit" class="btn btn-success btn-block mt-3" *ngIf="!updateMode"
-                    (click)="createTask()">Create Task</button>
-                <button type="submit" class="btn btn-warning btn-block mt-3" *ngIf="updateMode" (click)="updateTask()">Update
-                    Task</button>
+                <button type="submit" class="btn btn-success btn-block mt-3" (click)="createTask()">Create Task</button>
             </form>
         </div>
     </div>

@@ -70,6 +70,8 @@
   </div>
 </div>
 
+<app-update-todo *ngIf="editMode"></app-update-todo>
+
 <app-loading-spin *ngIf="fetchTasksStatus"></app-loading-spin>
 
 <app-pop-up></app-pop-up>

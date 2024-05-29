@@ -1,0 +1,13 @@
+
+<div id="container">
+  <form #form="ngForm" class="todo-form">
+    <i class="fas fa-close close-icon" (click)="onClose()"></i>
+    <div class="form-group">
+      <label for="new" class="form-label">Enter Task</label>
+      <input type="text" class="form-control" id="new" name="description" [(ngModel)]="taskName" required>
+    </div>
+    <button type="submit" class="btn btn-sm btn-outline-warning btn-block mt-3" (click)="updateTask(form)">Update Task</button>
+  </form>
+</div>
+
+<app-loading-spin *ngIf="fetchTasksStatus"></app-loading-spin>

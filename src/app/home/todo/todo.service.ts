@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Subject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { AuthService } from "../../auth/auth.service";
 import { PopUpService } from "../../pop-up/pop-up.service";
 
@@ -17,7 +17,8 @@ export class TodoService {
     tasksSubject = new BehaviorSubject<TaskModel[]>([]);
     fetchTasksStatus = new BehaviorSubject<boolean>(false);
 
-    onEditTask = new Subject<any>();
+    onEditTask = new BehaviorSubject<any>(null);
+    editMode = new BehaviorSubject<boolean>(null);
 
     private apiBaseUrl = 'https://task-manager-api-rho-seven.vercel.app';
     // private apiBaseUrl = 'https://localhost:3000';
