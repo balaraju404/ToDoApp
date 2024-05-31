@@ -32,9 +32,15 @@ export class RecycleBinComponent implements OnInit {
     const task = {
       deleted: false
     }
+    if(!confirm('Are you sure you want to restore ?')){
+      return;
+    }
     this.todoService.updateTask(id, task)
   }
   permanentDeleteTask(id: string) {
+    if(!confirm('Are you sure you want to delete perminently ?')){
+      return;
+    }
     this.todoService.deleteTask(id)
   }
 }

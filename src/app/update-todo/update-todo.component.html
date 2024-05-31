@@ -1,12 +1,13 @@
-
 <div id="container">
   <form #form="ngForm" class="todo-form">
-    <i class="fas fa-close close-icon" (click)="onClose()"></i>
+    <i class="fas fa-close close-icon" (click)="onClose()" data-bs-toggle="popover" data-bs-trigger="hover"
+    data-bs-placement="bottom" data-bs-content="Click to Close" appBootstrapPopover></i>
     <div class="form-group">
       <label for="new" class="form-label">Enter Task</label>
       <input type="text" class="form-control" id="new" name="description" [(ngModel)]="taskName" required>
     </div>
-    <button type="submit" class="btn btn-sm btn-outline-warning btn-block mt-3" (click)="updateTask(form)">Update Task</button>
+    <button type="submit" class="btn btn-sm btn-outline-warning btn-block mt-3" (click)="updateTask(form)">Update
+      Task</button>
   </form>
 </div>
 

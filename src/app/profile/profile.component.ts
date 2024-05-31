@@ -78,7 +78,7 @@ export class ProfileComponent implements OnInit {
   onUpdatePassword(form: NgForm): void {
     const { password, password2 } = form.value;
     if (!form.valid) {
-      this.errorStatus = 'Invalid form';
+      this.errorStatus = 'Fill all fields';
       return;
     }
     if (password !== password2) {
@@ -116,6 +116,10 @@ export class ProfileComponent implements OnInit {
       this.errorStatus = 'Upload a Image';
       return;
     }
+    if(!confirm('Do you want to Change Avatar ?')){
+      return;
+    }
+
     this.isLoading = true;
     this.errorStatus = null;
     this.authService.uploadAvatar(this.imageData).subscribe(

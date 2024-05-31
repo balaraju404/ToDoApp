@@ -12,10 +12,12 @@
                 <p>{{ task.description }}</p>
                 <div class="btn-group">
                   <button class="btn btn-link btn-sm" (click)="restoreTask(task._id)">
-                    <i class="fas fa-undo-alt text-white bg-warning p-1 rounded"></i> <!-- Replace with appropriate icon class -->
+                    <i class="fas fa-undo-alt text-white bg-warning p-1 rounded" data-bs-toggle="popover"
+                      data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Click to Re-Store" appBootstrapPopover></i>
                   </button>
                   <button class="btn btn-link btn-sm" (click)="permanentDeleteTask(task._id)">
-                    <i class="fas fa-trash-alt text-white bg-danger p-1 rounded"></i> <!-- Replace with appropriate icon class -->
+                    <i class="fas fa-trash-alt text-white bg-danger p-1 rounded" data-bs-toggle="popover"
+                      data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Click to Delete Perminently" appBootstrapPopover></i>
                   </button>
                 </div>
               </div>

@@ -90,6 +90,9 @@ export class TodoComponent implements OnInit {
   }
 
   deleteTask(id: string): void {
+    if(!confirm('Are you sure you want to delete ?')){
+      return;
+    }
     this.updateTask(id, { deleted: true });
   }
 

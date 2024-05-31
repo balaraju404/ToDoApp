@@ -1,7 +1,9 @@
 <!-- Navigation Bar -->
 <div class="nav bg-dark">
-  <a class="nav-link" routerLinkActive="active" routerLink="home">Home</a>
-  <a class="nav-link" routerLinkActive="active" routerLink="bin">Recycle Bin</a>
+  <a class="nav-link" routerLinkActive="active" routerLink="home" data-bs-toggle="popover" data-bs-trigger="hover"
+    [attr.data-bs-content]="!token ? 'Login to Access' : ''" appBootstrapPopover>Home</a>
+  <a class="nav-link" routerLinkActive="active" routerLink="bin" data-bs-toggle="popover" data-bs-trigger="hover"
+    [attr.data-bs-content]="!token ? 'Login to Access' : ''" appBootstrapPopover>Recycle Bin</a>
   <a *ngIf="!token" class="nav-link" routerLinkActive="active" routerLink="auth">Login</a>
   <a *ngIf="token" class="nav-link" routerLinkActive="active" routerLink="profile">Profile</a>
 </div>

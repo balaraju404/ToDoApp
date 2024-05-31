@@ -1,72 +1,82 @@
 <div class="container app-container" *ngIf="tasksList.length !== 0" cdkDropListGroup>
   <div class="row">
-      <!-- Ongoing Tasks Section -->
-      <div class="col-md-6">
-          <div class="task-section">
-              <h5 class="task-header ongoing-header">
-                  <span class="circle yellow"></span> Ongoing Tasks
-              </h5>
-              <ul class="list-group" cdkDropList [cdkDropListData]="onGoingTasksList" (cdkDropListDropped)="drop($event)">
-                  <ng-container *ngFor="let todo of tasksList" >
-                      <li class="list-group-item" *ngIf="!todo.completed" cdkDrag>
-                          <div class="task-container">
-                              <p>{{ todo.description }}</p>
-                              <div class="btn-group">
-                                  <i class="fas fa-check-circle text-white bg-success p-1 rounded" (click)="completeTask(todo._id)"></i>
-                                  <i class="fas fa-edit mx-1 text-white bg-dark p-1 rounded" (click)="editTask(todo._id)"></i>
-                                  <i class="fas fa-trash-alt text-white bg-danger p-1 rounded" (click)="deleteTask(todo._id)"></i>
-                              </div>
-                          </div>
-                      </li>
-                  </ng-container>
-                  <div *ngIf="noOngoingTasks()" class="container">
-                      <div class="row">
-                          <div class="col">
-                              <h4 class="no-tasks text-center mt-5">No Ongoing Tasks Found</h4>
-                          </div>
-                      </div>
-                  </div>
-              </ul>
+    <!-- Ongoing Tasks Section -->
+    <div class="col-md-6">
+      <div class="task-section">
+        <h5 class="task-header ongoing-header">
+          <span class="circle yellow"></span> Ongoing Tasks
+        </h5>
+        <ul class="list-group" cdkDropList [cdkDropListData]="onGoingTasksList" (cdkDropListDropped)="drop($event)">
+          <ng-container *ngFor="let todo of tasksList">
+            <li class="list-group-item" *ngIf="!todo.completed" cdkDrag>
+              <div class="task-container">
+                <p>{{ todo.description }}</p>
+                <div class="btn-group">
+                  <i class="fas fa-check-circle text-white bg-success p-1 rounded" (click)="completeTask(todo._id)"
+                    data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Click Complete Task"
+                    appBootstrapPopover></i>
+                  <i class="fas fa-edit mx-1 text-white bg-dark p-1 rounded" (click)="editTask(todo._id)"
+                    data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Click Edit Task"
+                    appBootstrapPopover></i>
+                  <i class="fas fa-trash-alt text-white bg-danger p-1 rounded" (click)="deleteTask(todo._id)"
+                    data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Click Delete Task"
+                    appBootstrapPopover></i>
+                </div>
+              </div>
+            </li>
+          </ng-container>
+          <div *ngIf="noOngoingTasks()" class="container">
+            <div class="row">
+              <div class="col">
+                <h4 class="no-tasks text-center mt-5">No Ongoing Tasks Found</h4>
+              </div>
+            </div>
+          </div>
+        </ul>
 
-          </div>
       </div>
-      <!-- Completed Tasks Section -->
-      <div class="col-md-6">
-          <div class="task-section">
-              <h5 class="task-header completed-header">
-                  <span class="circle green"></span> Completed Tasks
-              </h5>
-              <ul class="list-group" cdkDropList [cdkDropListData]="completedTasksList"  (cdkDropListDropped)="drop($event)">
-                  <ng-container *ngFor="let todo of tasksList">
-                      <li class="list-group-item" *ngIf="todo.completed" cdkDrag>
-                          <div class="task-container">
-                              <p>{{ todo.description }}</p>
-                              <div class="btn-group">
-                                  <i class="fas fa-undo mx-1 text-white bg-warning p-1 rounded" (click)="notCompleteTask(todo._id)"></i>
-                                  <i class="fas fa-trash-alt text-white bg-danger p-1 rounded" (click)="deleteTask(todo._id)"></i>
-                              </div>
-                          </div>
-                      </li>
-                  </ng-container>
-                  <div *ngIf="noCompletedTasks()" class="container">
-                      <div class="row">
-                          <div class="col">
-                              <h4 class="no-tasks text-center mt-5">No Completed Tasks Found</h4>
-                          </div>
-                      </div>
-                  </div>
-              </ul>
+    </div>
+    <!-- Completed Tasks Section -->
+    <div class="col-md-6">
+      <div class="task-section">
+        <h5 class="task-header completed-header">
+          <span class="circle green"></span> Completed Tasks
+        </h5>
+        <ul class="list-group" cdkDropList [cdkDropListData]="completedTasksList" (cdkDropListDropped)="drop($event)">
+          <ng-container *ngFor="let todo of tasksList">
+            <li class="list-group-item" *ngIf="todo.completed" cdkDrag>
+              <div class="task-container">
+                <p>{{ todo.description }}</p>
+                <div class="btn-group">
+                  <i class="fas fa-undo mx-1 text-white bg-warning p-1 rounded" (click)="notCompleteTask(todo._id)"
+                    data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Change to Not Complete Task"
+                    appBootstrapPopover></i>
+                  <i class="fas fa-trash-alt text-white bg-danger p-1 rounded" (click)="deleteTask(todo._id)"
+                    data-bs-toggle="popover" data-bs-trigger="hover" data-bs-placement="top" data-bs-content="Click to Delete Task"
+                    appBootstrapPopover></i>
+                </div>
+              </div>
+            </li>
+          </ng-container>
+          <div *ngIf="noCompletedTasks()" class="container">
+            <div class="row">
+              <div class="col">
+                <h4 class="no-tasks text-center mt-5">No Completed Tasks Found</h4>
+              </div>
+            </div>
           </div>
+        </ul>
       </div>
+    </div>
   </div>
 </div>
 
 <!-- No Tasks Found -->
 <div *ngIf="tasksList.length === 0" class="container">
   <div class="row">
-      <div class="col">
-          <h4 class="no-tasks text-center mt-5">No Tasks Found</h4>
-      </div>
+    <div class="col">
+      <h4 class="no-tasks text-center mt-5">No Tasks Found</h4>
+    </div>
   </div>
 </div>
 

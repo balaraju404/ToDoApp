@@ -5,7 +5,8 @@
       <div class="profile-section text-center">
         <h2>Profile</h2>
         <!-- Edit Icon -->
-        <i class="fas fa-edit edit-icon" (click)="onEdit()"></i>
+        <i class="fas fa-edit edit-icon" (click)="onEdit()" data-bs-toggle="popover" data-bs-trigger="hover"
+          data-bs-content="Click to Change Avatar" appBootstrapPopover></i>
 
         <!-- Avatar Section -->
         <div class="avatar">
@@ -25,7 +26,8 @@
           <button class="btn btn-sm btn-outline-danger mb-2"
             (click)="onChangePassword()">{{passwordChangeMode?'Cancel':'Change Password'}}</button>
           <form class="password-form" #form="ngForm" (ngSubmit)="onUpdatePassword(form)" *ngIf="passwordChangeMode">
-            <input type="password" class="form-control mb-2" placeholder="New Password" name="password" ngModel required>
+            <input type="password" class="form-control mb-2" placeholder="New Password" name="password" ngModel
+              required>
             <input type="password" class="form-control mb-2" placeholder="Re-enter Password" name="password2" ngModel
               required>
             <button class="btn btn-sm btn-outline-success" type="submit">Update Password</button>
@@ -38,7 +40,8 @@
     <div class="col-md-6 text-center mt-3 mt-md-0" style="display: flex;justify-content: center; align-items: center;">
       <div class="logout-delete-section">
         <button type="button" class="btn btn-sm btn-outline-primary" (click)="onLogout()">Logout</button>
-        <button type="button" class="btn btn-sm btn-outline-primary" (click)="onLogoutAll()">Logout All Sessions</button>
+        <button type="button" class="btn btn-sm btn-outline-primary" (click)="onLogoutAll()">Logout All
+          Sessions</button>
         <button type="button" class="btn btn-sm btn-outline-danger" (click)="onDelete()">Delete</button>
       </div>
     </div>
@@ -53,7 +56,8 @@
 
 <div class="dialog-box" *ngIf="editMode">
   <div class="dialog-box-content">
-    <i class="fas fa-close close-icon" (click)="onCloseDialogBox()"></i>
+    <i class="fas fa-close close-icon" (click)="onCloseDialogBox()" data-bs-toggle="popover" data-bs-trigger="hover"
+      data-bs-placement="bottom" data-bs-content="Click to Close" appBootstrapPopover></i>
     <input type="file" accept="image/*" (change)="onFileSelected($event)" class="form-control">
     <button type="button" class="btn btn-sm btn-outline-secondary" (click)="uploadProfile()">Upload</button>
   </div>

@@ -18,6 +18,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RecycleBinComponent } from './recycle-bin/recycle-bin.component';
 import { PopUpComponent } from './pop-up/pop-up.component';
 import { UpdateTodoComponent } from './update-todo/update-todo.component';
+import { BootstrapPopoverDirective } from './directives/popover.directive';
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import { UpdateTodoComponent } from './update-todo/update-todo.component';
     RecycleBinComponent,
     PopUpComponent,
     UpdateTodoComponent,
-
+    BootstrapPopoverDirective
   ],
   imports: [
     BrowserModule,
