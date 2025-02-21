@@ -20,7 +20,7 @@ export class TodoService {
     onEditTask = new BehaviorSubject<any>(null);
     editMode = new BehaviorSubject<boolean>(null);
 
-    private apiBaseUrl = 'https://task-manager-api-rho-seven.vercel.app';
+    private apiBaseUrl = 'https://todoapp-node.vercel.app';
     // private apiBaseUrl = 'https://localhost:3000';
 
     constructor(private http: HttpClient, private authService: AuthService, private popUpService: PopUpService) { }
