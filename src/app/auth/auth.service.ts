@@ -13,7 +13,7 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private apiBaseUrl = 'https://task-manager-api-rho-seven.vercel.app';
+  private apiBaseUrl = 'https://todoapp-node.vercel.app';
   // private apiBaseUrl = 'https://localhost:3000';
 
   private userSubject = new BehaviorSubject<AuthResponseData>(null);
